@@ -16,9 +16,9 @@ producer = Producer(get_confluent_config.get_config()[0])
 def kafka_consumer_thread():
     kafka_consumer.main()
 
-# with app.app_context():
-#     thread = threading.Thread(target=kafka_consumer_thread)
-#     thread.start()
+with app.app_context():
+    thread = threading.Thread(target=kafka_consumer_thread)
+    thread.start()
 
 @app.route('/get_sentiment',methods=['POST'])
 def sentiment_analysis():
