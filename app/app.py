@@ -3,8 +3,8 @@ from flask_cors import CORS
 import os
 import threading
 from confluent_kafka import Producer, Consumer
-from methods import get_confluent_config
-from methods import kafka_consumer
+from app.methods import get_confluent_config
+from app.methods import kafka_consumer
 
 app = Flask(__name__)
 CORS(app)

@@ -1,6 +1,6 @@
 from confluent_kafka import Consumer, KafkaError, Producer
-from methods import get_confluent_config
-from methods import get_sentiment
+from app.methods import get_confluent_config
+from app.methods import get_sentiment
 import sys
 import os
 
