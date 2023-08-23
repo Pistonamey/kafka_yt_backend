@@ -31,7 +31,7 @@ def fetch_comments(video_id, page_token=None):
 
     response = requests.get(BASE_URL, params=params)
     data = response.json()
-
+    
     # Extract and print comments from the response
     for item in data['items']:
         comment = item['snippet']['topLevelComment']['snippet']['textDisplay']

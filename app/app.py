@@ -6,6 +6,7 @@ import time
 from confluent_kafka import Producer, Consumer
 from app.methods import get_confluent_config
 from app.methods import kafka_consumer
+from app.methods import get_sentiment
 
 app = Flask(__name__)
 CORS(app)
@@ -17,9 +18,9 @@ producer = Producer(get_confluent_config.get_config()[0])
 def kafka_consumer_thread():
     kafka_consumer.main()
 
-with app.app_context():
-    thread = threading.Thread(target=kafka_consumer_thread)
-    thread.start()
+# with app.app_context():
+#     thread = threading.Thread(target=kafka_consumer_thread)
+#     thread.start()
 
 @app.route('/get_sentiment', methods=['POST'])
 def sentiment_analysis():
@@ -58,7 +59,15 @@ def sentiment_analysis():
 
     return jsonify({'error': 'Method not supported'})
 
-        
+@app.route('/sentimenter', methods=['POST'])
+def sentimenter():
+    if request.method == 'POST':
+        video_id = request.form['video_id']
+        print(video_id)
+        result=get_sentiment.main(video_id)
+        return jsonify({'result': str(result)})    
+
+    return jsonify({'error': 'Method not supported'})        
 
 
 @app.route('/')
