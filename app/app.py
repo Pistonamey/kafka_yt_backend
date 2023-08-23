@@ -32,7 +32,7 @@ def sentiment_analysis():
         consumer.subscribe(['sentiment-results'])
 
         # Poll the result topic for the specific video ID with a timeout
-        timeout = 7  # Example: 10 seconds, adjust as needed
+        timeout = 15  # Example: 10 seconds, adjust as needed
         start_time = time.time()
 
         try:
