@@ -21,6 +21,7 @@ def kafka_consumer_thread():
 # with app.app_context():
 #     thread = threading.Thread(target=kafka_consumer_thread)
 #     thread.start()
+#     start the threads
 
 @app.route('/get_sentiment', methods=['POST'])
 def sentiment_analysis():
